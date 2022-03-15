@@ -1,13 +1,16 @@
 from globalTypes import *
 
+string = ''
+p = 0
+lng = 0
+
 def globales(programa, posicion, progLong):
-    global s
+    global string
     global p
     global lng
-
-    s = programa
     p = posicion
     lng = progLong
+    string = programa
 
 def reset(lexem, token):
     print(lexem, token)
@@ -35,7 +38,7 @@ def getToken(imprime=True):
         [0]*20,
         [0]*20,
         [0]*20,
-        [27]*19+[28],
+        [25]*11+[28]+[25]*8,
         [0]*20,
         [0]*20,
         [0]*20,
@@ -56,10 +59,10 @@ def getToken(imprime=True):
     }
     # s = '1+1$'
     # s = 'int gcd(int u, int v){ <=,,,, }$'
-    s = ' >=== >= hh 7 void !=$'
+    # string = '!=!=!=$'
 
-    # s = open('test.c', 'r')
-    # s = s.read() + '$'     # lee todo el archivo a compilar
+    # string = open('test.c', 'r')
+    # string = string.read() + '$'     # lee todo el archivo a compilar
 
     blank = ' \n\t$'
     digit = '0123456789'
@@ -72,8 +75,8 @@ def getToken(imprime=True):
 
     tokens = []
     # import ipdb; ipdb.set_trace()
-    while (s[p] != '$' or (s[p] == '$' and state != 0)):
-        char = s[p]
+    while p < len(string) and (string[p] != '$' or (string[p] == '$' and state != 0)):
+        char = string[p]
         if char in letter:
             col = 0
         elif char in blank:
@@ -206,15 +209,12 @@ def getToken(imprime=True):
             token = TokenType.DIFF
             lexem = '!='
             lexem, state = reset(lexem, token)
-        else:
-            token = TokenType.ERROR
-            lexem, state = reset(lexem, token)
         p += 1
 
         if state != 0:
             lexem += char
         else:
-            tokens.append(token)
-    return tokens + [TokenType.ENDFILE]
+            tokens.append((token, lexem))
+    return tokens + [(TokenType.ENDFILE, '$')]
 
 getToken()

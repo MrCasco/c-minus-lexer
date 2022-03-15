@@ -1,4 +1,4 @@
-/*Un programa para realizar el algoritmo 
+/*Un programa para realizar el algoritmo
 de Euclides para calcular mcd.*/
 
 int gcd(int u , int v){
@@ -10,5 +10,5 @@ int gcd(int u , int v){
 void main(void){
     int x; int y;
     x = input(); y = input();
-    output(gcd(x,y));
+    output(gcd(x,y6));
 }
