@@ -1,5 +1,4 @@
-!/*Un programa para realizar el algoritmo
-de Euclides para calcular mcd.*/
+
 
 int gcd(int u , int v){
     if(v==0) return u;

@@ -14,6 +14,8 @@ class TokenType(Enum):
     # multicharacter tokens
     ID = 310
     NUM = 311
+    BODYCMNT = 200
+
     # special symbols
     PLUS = '+'
     MINUS = '-'
@@ -34,5 +36,5 @@ class TokenType(Enum):
     CLOSEBRACKET = ']'
     OPENCURLY = '{'
     CLOSECURLY = '}'
-    LCMNT = '/*'
-    RCMNT = '*/'
+    OPENCMNT = '/*'
+    CLOSECMNT = '*/'
